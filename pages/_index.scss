@@ -1,0 +1,121 @@
+.header-baseLine{
+    border: solid black;
+    background-color: black;
+    width: 100%;
+    height: 40px;
+}
+
+.wowoSlogan{
+    margin-top: 32px;
+    margin-bottom: 60px;
+    .wowoSlogan-banner {
+        background-image: url('https://github.com/hexschool/js-training/blob/main/%E7%AC%AC%E4%B9%9D%E9%80%B1%E4%B8%BB%E7%B7%9A%E4%BB%BB%E5%8B%99%E5%9C%96%E5%BA%AB/3ewLAKn.png?raw=true');
+        background-size: cover;
+        background-position: center 100%;
+        height: 420px;
+        position: relative;
+        .wowoSlogan-bannerText{
+            font-size: 32px;
+            line-height: 1.25;
+            color: #ffff;
+            position: absolute;
+            top: 70%;
+            left: 7%;
+        }
+    }
+    
+}
+
+.advantages{
+    margin-bottom: 60px;
+    h2{
+        margin-bottom: 28px;
+    }
+}
+
+.compare {
+    margin-bottom: 64px;
+    h2{
+        margin-bottom: 32px;
+    }
+    .table{
+        thead{
+            border-bottom: 1px solid #B9B9B9;
+        }
+        tr{
+            border-bottom: 1px solid #B9B9B9;
+        }
+    }
+}
+
+.commend {
+    background-color: $dark-primary;
+    max-width: 1920px;
+    width: 100%;
+    height: 424px;
+    h2{
+        color: #ffff;
+        font-weight: bold;
+        text-align: center;
+        padding-top: 60px;
+        padding-bottom: 32px;
+    }
+}
+
+.transport {
+    li {
+        position: relative;
+        .arrow {
+            position: absolute;
+            font-size: 28px;
+            top: 25%;
+            left: 85%;
+        }
+    }
+}
+
+.productSearch {
+    margin-top: 72px;
+}
+.productCard-area{
+    margin-bottom: 108px;
+}
+
+
+.cartList {
+    margin-bottom: 130px;
+    thead{
+        th{
+            font-size: 20px;
+            font-weight: bold;
+            padding-right: 120px;
+            border-bottom: 1px solid black;            
+        }
+        .cartList-head{
+            padding-right: 280px;
+        }
+    }
+    tbody{
+        img{
+            width: 80px;
+            height: 80px;
+            margin-right: 15px;
+        }
+        td {
+            font-size: 20px;
+            border-bottom: 1px solid #bbb9b9;
+        }
+        p{
+            margin-top: 28px;
+            font-weight: bold;
+        }
+    }
+    tfoot{
+        td{
+            font-size: 20px;
+        }
+        .cartList-total{
+            font-size: 28px;
+        }
+    }
+}
