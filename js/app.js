@@ -282,9 +282,9 @@ const constrains = {
   const validBtn = document.querySelector('.valid-btn');
 
   input.forEach((item) => {
-    item.addEventListener('change',function(){
+    item.addEventListener('change',function(e){
       //預設為空值
-      // item.nextElementSibling.textContent= "";
+      item.nextElementSibling.textContent= "";
 
       //驗證回傳內容
       let errors = validate(form, constrains);
