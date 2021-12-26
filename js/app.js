@@ -106,7 +106,7 @@ categorySelect.addEventListener('change', function (e) {
           <div class="productCard-head">
               <img src=${item.images} alt="${item.description}">                            
               <span>新品</span>
-              <button class="js-addCart">加入購物車</button>
+              <button class="js-addCart" data-id="${item.id}">加入購物車</button>
           </div>
           <div class="productCard-text">
               <p>${item.title}</p>
@@ -239,6 +239,70 @@ deleteAllCart.addEventListener('click', function (e) {
 })
 
 
+//送出訂單資料欄驗證 (validate.js)
+const constrains = {
+  "姓名":{
+    presence:{
+      message:"為必填欄位!"
+    }
+  },
+  "連絡電話":{
+    presence:{
+      message:"為必填欄位!"
+    },
+    length:{
+      minimum:9,
+      maximum:14,
+      tooShort:"至少 9 碼(含)以上!",
+      tooLong:"不能超過 14 碼!"
+      }
+    },
+    "Email":{
+      presence:{
+        message:"為必填欄位!"
+      },
+      email:{
+        message:"格式不正確!"
+      }
+    },
+    "寄送地址":{
+      presence:{
+        message:"為必填欄位!"
+      }
+    },
+    "付款方式":{
+      presence:{
+        message:"為必填欄位!"
+      }
+    }
+  }
+
+  const form = document.querySelector('.js-form');
+  const input = document.querySelectorAll('input[type=text],input[type=tel],input[type=email],select');
+  const validBtn = document.querySelector('.valid-btn');
+
+  input.forEach((item) => {
+    item.addEventListener('change',function(){
+      //預設為空值
+      // item.nextElementSibling.textContent= "";
+
+      //驗證回傳內容
+      let errors = validate(form, constrains);
+      //console.log(errors);
+
+      //於網頁顯示
+      if(errors){
+        Object.keys(errors).forEach(function(keys){
+          document.querySelector(`.${keys}`).textContent = errors[keys]
+          //input 標籤的name和 p 標籤的class名相對應
+          //以對應的p標籤來顯示 errors KEY的值
+          //errors.姓名 => 姓名 為必填欄位!
+        })
+      }
+    })
+  })
+
+
 //送出訂單邏輯
 sendOrder.addEventListener('click', function (e) {
   let cartLength = document.querySelectorAll('.cartList tr').length;
@@ -280,7 +344,7 @@ function createOrder(item) {
           "payment": item.payment
         }
       }
-    }, headers)
+    })
     .then(function (response) {
       alert('訂單已成功建立，謝謝!')
       getCartList();
@@ -288,60 +352,3 @@ function createOrder(item) {
 }
 
 
-//送出訂單資料欄驗證 (validate.js)
-const constrains = {
-  "姓名":{
-    presence:{
-      message:"為必填欄位!"
-    }
-  },
-  "連絡電話":{
-    presence:{
-      message:"為必填欄位!"
-    },
-    length:{
-      minimum:9,
-      maximum:14,
-      tooShort:"至少 9 碼(含)以上!",
-      tooLong:"不能超過 14 碼!"
-      }
-    },
-    "Email":{
-      presence:{
-        message:"為必填欄位!"
-      },
-      email:{
-        message:"格式不正確!"
-      }
-    },
-    "寄送地址":{
-      presence:{
-        message:"為必填欄位!"
-      }
-    }
-  }
-
-  const form = document.querySelector('.js-form');
-  const input = document.querySelectorAll('input[type=text],input[type=tel],input[type=email],select');
-  const validBtn = document.querySelector('.valid-btn');
-
-  input.forEach((item) => {
-    item.addEventListener('change',function(){
-      //預設為空值
-      item.nextElementSibling.textContent= "";
-
-      //驗證回傳內容
-      let errors = validate(form, constrains);
-      //console.log(errors);
-
-      //於網頁顯示
-      if(errors){
-        Object.keys(errors).forEach(function(keys){
-          document.querySelector(`.${keys}`).textContent = errors[keys]
-          //input 標籤的name和 p 標籤的class名相對應
-          //以對應的p標籤來顯示 errors KEY的值
-          //errors.姓名 => 姓名 為必填欄位!
-        })
-      }
-    })
-  })

@@ -356,3 +356,16 @@ body h2 {
 .cartList tfoot .cartList-total {
   font-size: 28px;
 }
+
+.orderTable tbody th {
+  font-size: 24px;
+}
+
+.orderTable tbody td {
+  font-size: 24px;
+}
+
+.c3-axis-x text {
+  font-size: 24px;
+  font-weight: bold;
+}
